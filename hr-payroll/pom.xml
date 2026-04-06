@@ -5,29 +5,31 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- SPRING BOOT ANTIGO (COMPATÍVEL COM RIBBON) -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>2.3.4.RELEASE</version>
         <relativePath/>
     </parent>
 
-    <!-- 🔥 CORRIGIDO (letra minúscula) -->
     <groupId>com.altatech</groupId>
     <artifactId>hr-payroll</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>11</java.version>
+        <!-- SPRING CLOUD COMPATÍVEL COM RIBBON -->
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
     </properties>
 
-    <!-- ✅ NECESSÁRIO PARA OPENFEIGN -->
+    <!-- NECESSÁRIO PARA SPRING CLOUD -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.8</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -48,17 +50,23 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- H2 DATABASE -->
+        <!-- H2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
-        <!-- OPENFEIGN 🔥 -->
+        <!-- OPENFEIGN (VERSÃO ANTIGA COMPATÍVEL) -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!-- RIBBON (FUNCIONA NESSA VERSÃO) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
 
         <!-- TESTES -->
@@ -80,3 +88,4 @@
     </build>
 
 </project>
+
