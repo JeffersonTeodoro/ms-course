@@ -1,4 +1,10 @@
 package com.altatech.hruser.repositories;
 
-public interface UserRepository {
+import com.altatech.hruser.entities.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findByEmail(String email);
+
 }
